@@ -1,68 +1,139 @@
 App = {
-  web3Provider: null,
-  contracts: {},
+    web3Provider: null,
+    contracts: {},
+    title: null,
+    name: null,
+    check: null,
+    desc:null,
 
-  init: function() {
-    // Load pets.
-    $.getJSON('../pets.json', function(data) {
-      var petsRow = $('#petsRow');
-      var petTemplate = $('#petTemplate');
+    init: function() {
+        return App.initWeb3();
+    },
 
-      for (i = 0; i < data.length; i ++) {
-        petTemplate.find('.panel-title').text(data[i].name);
-        petTemplate.find('img').attr('src', data[i].picture);
-        petTemplate.find('.pet-breed').text(data[i].breed);
-        petTemplate.find('.pet-age').text(data[i].age);
-        petTemplate.find('.pet-location').text(data[i].location);
-        petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
+    initWeb3: function() {
+        if (typeof web3 !== 'undefined') {
+            // If a web3 instance is already provided by Meta Mask.
+            App.web3Provider = web3.currentProvider;
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // Specify default instance if no web3 instance provided
+            App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
+            web3 = new Web3(App.web3Provider);
+        }
+        return App.initAccount();
+    },
 
-        petsRow.append(petTemplate.html());
-      }
-    });
+    initAccount: function() {
+        web3.eth.getCoinbase(function(err, account) {
+            if (err === null) {
+                App.account = account;
+                App.initContract();
+            }
+        });
+    },
 
-    return App.initWeb3();
-  },
+    initContract: function() {
+        $.getJSON("Campaign.json", function(campaign) {
+            // Instantiate a new truffle contract from the artifact
+            App.contracts.Campaign = TruffleContract(campaign);
 
-  initWeb3: function() {
-    /*
-     * Replace me...
-     */
+            $.getJSON("Campaigns.json",function(campaigns){
+                App.contracts.Campaigns = TruffleContract(campaigns);
+                App.bindEvents();
+            });
+        });
 
-    return App.initContract();
-  },
+    },
 
-  initContract: function() {
-    /*
-     * Replace me...
-     */
+    bindEvents: function() {
+        $('#createTitle').on('change',function(){
+            App.title = $('#createTitle').val();
+        })
+        $('#createName').on('change',function(){
+            App.name = $('#createName').val();
+        })
+        $('#createCheckpoints').on('change',function(){
+            App.check = parseInt($('#createCheckpoints').val());
+        })
+        $('#createDesc').on('change',function(){
+            App.desc = $('#createDesc').val();
+        })
 
-    return App.bindEvents();
-  },
+        var donate = $('#donatePage').html()
+        if (donate === "Donate") {
+            // we are on the donate page
+            App.getCampaigns();
+        }
 
-  bindEvents: function() {
-    $(document).on('click', '.btn-adopt', App.handleAdopt);
-  },
+    },
 
-  markAdopted: function(adopters, account) {
-    /*
-     * Replace me...
-     */
-  },
+    createCampaign: function() {
+        if (!isNaN(App.check)) {
+            App.contracts.Campaign.setProvider(App.web3Provider);
+            App.contracts.Campaign.new(App.title, App.name, App.check, App.desc, {
+                from: App.account,
+                gas: 2500000
+            }).then(function (instance) {
+                console.log(instance.address)
+                App.contracts.Campaigns.setProvider(App.web3Provider);
+                // Static address used for the 1 master Campaigns contract
+                App.contracts.Campaigns.at('0xa2b3fda24a7022ef1c8f5b3799de451124c59191').then(function(inst) {
+                    return inst.addCampaign(instance.address, App.title, App.name, App.check, {
+                        from: App.account,
+                        gas: 2500000
+                    })
+                })
+                    .then(function() {
+                    console.log("Added Campaign to Campaigns")
+                })
+            })
+        }
+    },
 
-  handleAdopt: function(event) {
-    event.preventDefault();
+    getCampaigns: function() {
+        var campaignsInstance;
+        App.contracts.Campaigns.setProvider(App.web3Provider);
+        App.contracts.Campaigns.at('0xa2b3fda24a7022ef1c8f5b3799de451124c59191').then(function(instance) {
+            campaignsInstance = instance;
+            return instance.getNumCampaigns();
+        }).then(function(numCampaigns){
+            numCampaigns = parseInt(numCampaigns.toString());
+            var html = '';
+            var i = 0;
+            App.campaignRecursion(campaignsInstance,html,i,numCampaigns)
+        })
+    },
 
-    var petId = parseInt($(event.target).data('id'));
+    campaignHTML: function(address, title, name) {
+        var result = '<div class="py-5 bg-secondary"><div class="container">' +
+            '<div class="row"><div class="col-md-12"><div class="card">' +
+            '<div class="card-header">' + address + '</div>' +
+            '<div class="card-body"><h4>' + title + '</h4>' +
+            '<h6 class="text-muted">' + name + '</h6>' +
+            '</div><div class="card-footer">' +
+            '<a class="btn btn-primary" href="Campaign.html?address=' + address + '">See Campaign</a>' +
+            '</div> </div> </div> </div> </div> </div>'
 
-    /*
-     * Replace me...
-     */
-  }
+        return result;
+
+    },
+
+    campaignRecursion: function(campaignsInstance, html, i, numCampaigns) {
+        if (i >= numCampaigns) {
+            $('#campaigns').html(html)
+        }
+        else {
+            campaignsInstance.getCampaignDescription(i).then(function(campaign) {
+                App.campaignRecursion(campaignsInstance, html + App.campaignHTML(campaign[0], campaign[1], campaign[2]), i+1, numCampaigns)
+            })
+
+        }
+    }
 
 };
 
 $(function() {
-  $(window).load(function() {
-    App.init();
-  });
+    $(window).load(function() {
+        App.init();
+    });
 });
