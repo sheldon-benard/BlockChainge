@@ -1,0 +1,48 @@
+pragma solidity ^0.4.15;
+
+contract Campaign {
+    
+    CampaignInfo campaignInfo;
+    uint256 currTier;
+    uint256 totalTier;
+    uint256 total;
+    
+    mapping(address => uint256[]) balances;
+    
+    struct CampaignInfo {
+        address owner;
+        string title;
+        string name;
+        string desc;
+    }
+    
+    constructor(string title, string name, uint8 tier, string desc) {
+        campaignInfo = CampaignInfo(msg.sender, title, name, desc);
+        currTier = 1;
+        totalTier = tier;
+    }
+
+    function donate() payable {
+        require(msg.value > 0);
+        if (balances[msg.sender].length == 0) {
+            balances[msg.sender].length = totalTier;
+        }
+        balances[msg.sender][currTier - 1] += msg.value;
+        total += msg.value;
+    }
+    
+    function withdraw() {
+        require(msg.sender == campaignInfo.owner);
+        campaignInfo.owner.transfer(this.balance);
+        currTier++;
+    }
+    
+    function cancel() {
+        require(balances[msg.sender].length > 0);
+        total -= balances[msg.sender][currTier - 1];
+        msg.sender.transfer(balances[msg.sender][currTier - 1]);
+        balances[msg.sender][currTier - 1] = 0;
+    }
+    
+
+}
