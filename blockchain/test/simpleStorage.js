@@ -17,5 +17,7 @@ contract('SimpleStorage', (accounts) => {
 		const ssContract = await SimpleStorage.deployed()
 		ssContract.setFavorite(33, {from: bob})
 		const newBobNum = await ssContract.favoriteNumbers.call(bob)
-		assert.equal(newBobNum, 30,
-"bob's new value was not 33")
+		assert.equal(newBobNum, 33,
+					"bob's new value was not 33")
+			})
+})
