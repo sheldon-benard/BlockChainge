@@ -2,27 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db6aecb7-0ca5-4344-ae2e-82c43c3b2715" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/blockchain/contracts/Campaign.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/contracts/Migrations.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/migrations/1_initial_migration.js" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/migrations/1_initial_migration.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blockchain/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blockchain/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/src/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/src/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/src/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/src/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/src/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/src/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/src/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/src/images/boxer.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/src/images/french-bulldog.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/src/images/golden-retriever.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/src/images/scottish-terrier.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blockchain/src/CreateCampaign.html" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/src/CreateCampaign.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blockchain/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blockchain/src/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/blockchain/src/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blockchain/src/pets.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conference.html" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -39,8 +23,8 @@
       <file leaf-file-name="CreateCampaign.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blockchain/src/CreateCampaign.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
+            <state relative-caret-position="253">
+              <caret line="52" column="73" selection-start-line="52" selection-start-column="68" selection-end-line="52" selection-end-column="73" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -71,20 +55,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="truffle.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blockchain/truffle.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="simpleStorage.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blockchain/test/simpleStorage.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file leaf-file-name="Donate.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blockchain/src/Donate.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -97,24 +67,42 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blockchain/src/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="89" />
+            <state relative-caret-position="722">
+              <caret line="51" selection-start-line="51" selection-end-line="54" selection-end-column="35" />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Campaign.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blockchain/src/Campaign.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-141" />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blockchain/src/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="86" column="21" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
+            <state relative-caret-position="267">
+              <caret line="124" column="12" selection-start-line="124" selection-start-column="12" selection-end-line="124" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blockchain/node_modules/buffer/README.md">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blockchain/node_modules/buffer/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blockchain/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -136,12 +124,12 @@
       <list>
         <option value="$PROJECT_DIR$/blockchain/src/old_petshop/js/app.js" />
         <option value="$PROJECT_DIR$/blockchain/contracts/Migrations.sol" />
-        <option value="$PROJECT_DIR$/blockchain/src/index.html" />
-        <option value="$PROJECT_DIR$/blockchain/src/CreateCampaign.html" />
         <option value="$PROJECT_DIR$/blockchain/migrations/1_initial_migration.js" />
         <option value="$PROJECT_DIR$/blockchain/contracts/Campaigns.sol" />
         <option value="$PROJECT_DIR$/blockchain/src/Donate.html" />
         <option value="$PROJECT_DIR$/blockchain/contracts/Campaign.sol" />
+        <option value="$PROJECT_DIR$/blockchain/src/index.html" />
+        <option value="$PROJECT_DIR$/blockchain/src/CreateCampaign.html" />
         <option value="$PROJECT_DIR$/blockchain/src/js/app.js" />
       </list>
     </option>
@@ -254,12 +242,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1529769800344</updated>
-      <workItem from="1529769804129" duration="16427000" />
+      <workItem from="1529769804129" duration="19873000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16427000" />
+    <option name="totallyTimeSpent" value="19873000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -336,13 +324,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blockchain/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blockchain/build/contracts/Campaigns.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -375,32 +356,8 @@
         <state relative-caret-position="-141" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blockchain/src/CreateCampaign.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blockchain/src/styleguide.html">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blockchain/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blockchain/src/Donate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="36" column="2" selection-start-line="36" selection-start-column="6" selection-end-line="53" selection-end-column="12" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blockchain/contracts/Campaigns.sol">
       <provider selected="true" editor-type-id="text-editor">
@@ -416,10 +373,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/blockchain/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blockchain/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="51" selection-start-line="51" selection-end-line="54" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blockchain/node_modules/buffer/README.md">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blockchain/src/Donate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="36" column="2" selection-start-line="36" selection-start-column="6" selection-end-line="53" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blockchain/node_modules/buffer/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blockchain/src/CreateCampaign.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="52" column="73" selection-start-line="52" selection-start-column="68" selection-end-line="52" selection-end-column="73" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/blockchain/src/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="86" column="21" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
+        <state relative-caret-position="267">
+          <caret line="124" column="12" selection-start-line="124" selection-start-column="12" selection-end-line="124" selection-end-column="12" />
         </state>
       </provider>
     </entry>

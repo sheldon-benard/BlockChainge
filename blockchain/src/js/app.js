@@ -5,6 +5,7 @@ App = {
     name: null,
     check: null,
     desc:null,
+    buffer: null,
 
     init: function() {
         return App.initWeb3();
@@ -65,6 +66,11 @@ App = {
             App.getCampaigns();
         }
 
+        if (window.location.search.includes("address=")) {
+            // We are on the campaigns page
+            App.getCampaign(window.location.search.replace("?address=", ""))
+        }
+
     },
 
     createCampaign: function() {
@@ -90,6 +96,13 @@ App = {
         }
     },
 
+    getCampaign: function(address) {
+        App.contracts.Campaign.setProvider(App.web3Provider);
+        App.contracts.Campaign.at(address).then(function(instance){
+
+        });
+    },
+
     getCampaigns: function() {
         var campaignsInstance;
         App.contracts.Campaigns.setProvider(App.web3Provider);
@@ -102,6 +115,15 @@ App = {
             var i = 0;
             App.campaignRecursion(campaignsInstance,html,i,numCampaigns)
         })
+    },
+
+    fileUpload: function(event) {
+        const file = event.target.files[0]
+        const reader = new window.FileReader()
+        reader.readAsArrayBuffer(file)
+        reader.onloadend = () => {
+            
+        }
     },
 
     campaignHTML: function(address, title, name) {

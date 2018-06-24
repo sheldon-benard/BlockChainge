@@ -50,7 +50,7 @@
               <label>Description*</label>
               <textarea class="form-control" id="createDesc" rows="3"></textarea>
             </div>
-            <!--<button class="btn btn" id="createPic">Upload Image</button>-->
+            <input type="file" id="upload" onchange="App.fileUpload(event);">
             <br>
             <button type="submit" class="btn btn-primary my-2 btn-lg" id="createCreate">Create</button>
           </form>
@@ -66,6 +66,7 @@
       </div>
     </div>
   </div>
+
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
