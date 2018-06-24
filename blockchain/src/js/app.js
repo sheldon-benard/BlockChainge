@@ -89,7 +89,9 @@ App = {
                 console.log(instance.address)
                 App.contracts.Campaigns.setProvider(App.web3Provider);
                 // Static address used for the 1 master Campaigns contract
-                App.contracts.Campaigns.at('0xa2b3fda24a7022ef1c8f5b3799de451124c59191').then(function(inst) {
+                // 0xd405d1496aec7d597a6d6f6227ece87c11cd6990 new
+                // 0xa2b3fda24a7022ef1c8f5b3799de451124c59191 old
+                App.contracts.Campaigns.at('0xd405d1496aec7d597a6d6f6227ece87c11cd6990').then(function(inst) {
                     return inst.addCampaign(instance.address, App.title, App.name, App.check, {
                         from: App.account,
                         gas: 2500000
@@ -132,7 +134,7 @@ App = {
     getCampaigns: function() {
         var campaignsInstance;
         App.contracts.Campaigns.setProvider(App.web3Provider);
-        App.contracts.Campaigns.at('0xa2b3fda24a7022ef1c8f5b3799de451124c59191').then(function(instance) {
+        App.contracts.Campaigns.at('0xd405d1496aec7d597a6d6f6227ece87c11cd6990').then(function(instance) {
             campaignsInstance = instance;
             return instance.getNumCampaigns();
         }).then(function(numCampaigns){
