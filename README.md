@@ -14,4 +14,4 @@ Campaigns feature checkpoints. Thus, the total amount for the campaign is broken
 (or checkpoints), and they can cancel anytime before checkpoint payout. After a checkpoint is done, the campaign creator will post on the outcome of the 
 checkpoint. If donors are happy, they can continue to support by donating to the next (or future) checkpoints.
 
-Built With: Truffle (Ganache), IPFS, Pingendo, ParticlesJS, Metamask
+Built With: Truffle (Ganache), IPFS, Pingendo, ParticlesJS, Metamask, HTML/CSS, JavaScript(jQuery)
