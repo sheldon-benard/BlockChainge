@@ -1,5 +1,7 @@
 # BlockChainge
 
+![Screenshot](blockchainge.png)
+
 Every donor wants to know where their money goes, and current crowdsourcing platforms feature high processing fees and low transparency. 
 BlockChainge is a decentralized solution, which features low transaction fees (mining cost) and a tier based donation payout. This ensures the 
 recipient is transparent with where the money goes.
