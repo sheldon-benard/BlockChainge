@@ -5,7 +5,11 @@ App = {
     name: null,
     check: null,
     desc:null,
+    totalCheckpoints: null,
+    currCheckpoints: null,
+    addr: null,
     buffer: null,
+    hash: null,
 
     init: function() {
         return App.initWeb3();
@@ -68,7 +72,9 @@ App = {
 
         if (window.location.search.includes("address=")) {
             // We are on the campaigns page
-            App.getCampaign(window.location.search.replace("?address=", ""))
+            var r = window.location.search.replace("?address=", "");
+            console.log(r)
+            App.getCampaign(r)
         }
 
     },
@@ -76,7 +82,7 @@ App = {
     createCampaign: function() {
         if (!isNaN(App.check)) {
             App.contracts.Campaign.setProvider(App.web3Provider);
-            App.contracts.Campaign.new(App.title, App.name, App.check, App.desc, {
+            App.contracts.Campaign.new(App.title, App.name, App.check, App.desc, App.hash, {
                 from: App.account,
                 gas: 2500000
             }).then(function (instance) {
@@ -97,9 +103,29 @@ App = {
     },
 
     getCampaign: function(address) {
+        App.addr = address
         App.contracts.Campaign.setProvider(App.web3Provider);
         App.contracts.Campaign.at(address).then(function(instance){
-
+            console.log(instance)
+            instance.getFields({
+                from: App.account,
+                gas: 2500000
+            }).then(function(result){
+                // owner, title, name, description, totalCheckpoints, currCheckpoint, total, isOwner, hash
+                console.log(result)
+                $('#cTitle').html(result[1] + ' <br/> ' + result[2] + ' (' + result[0] + ')')
+                $('#cDesc').html(result[3])
+                $('#cCheck').html("Current Checkpoint: " + (parseInt(result[5].toString()) + 1))
+                $('#cTotal').html("Total (wei): " + result[6].toString())
+                $('#cHash').html("IPFS Hash: " + result[8])
+                App.totalCheckpoints = parseInt(result[4])
+                App.currCheckpoints = parseInt(result[5].toString());
+                if (!result[7]) {
+                    App.checkpointHTML(App.totalCheckpoints)
+                } else {
+                    App.withdrawHTML(App.currCheckpoints)
+                }
+            })
         });
     },
 
@@ -122,12 +148,29 @@ App = {
         const reader = new window.FileReader()
         reader.readAsArrayBuffer(file)
         reader.onloadend = () => {
-            
+            App.buffer = Buffer(reader.result)
+            let node = new Ipfs({ repo: 'ipfs-' + Math.random() })
+            node.once('ready', () => {
+                node.files.add(App.buffer, (error, result) => {
+                    if(error) {
+                        console.log('err')
+                        console.log(error)
+                        return
+                    }
+                    console.log('success')
+                    //result.forEach((file) => console.log('successfully stored', file.hash))
+                    console.log(result[0].hash)
+                    App.hash = result[0].hash
+
+                })
+                // console.log(App.buffer)
+            })
+
         }
     },
 
     campaignHTML: function(address, title, name) {
-        var result = '<div class="py-5 bg-secondary"><div class="container">' +
+        var result = '<div class="py-5" style="background-color: #00001a"><div class="container">' +
             '<div class="row"><div class="col-md-12"><div class="card">' +
             '<div class="card-header">' + address + '</div>' +
             '<div class="card-body"><h4>' + title + '</h4>' +
@@ -138,6 +181,52 @@ App = {
 
         return result;
 
+    },
+
+    checkpointHTML: function(chkp) {
+        var result = ""
+        for (var i = 0; i < chkp; i++) {
+            result += '<button onclick="App.donate(' + i + ')" class="btn my-2 btn-lg btn-dark" style="margin-right: 20px;">Donate CP ' + (i+1) + '</button>'
+        }
+
+        $('#buttons').html(result)
+    },
+
+    withdrawHTML: function(currChkp) {
+        var result = ""
+        for (var i = 0; i < (currChkp + 1); i++) {
+            result += '<button onclick="App.withdraw(' + i + ')" class="btn my-2 btn-lg btn-dark" style="margin-right: 20px;">Withdraw CP ' + (i+1) + '</button>'
+        }
+
+        $('#buttons').html(result)
+    },
+
+    donate: function(i) {
+        var payment = Array.apply(null, Array(App.totalCheckpoints)).map(Number.prototype.valueOf,0);
+        var wei = parseInt($('#etherDonation').val()) * 1000000000000000000
+        payment[i] = wei
+        App.contracts.Campaign.at(App.addr).then(function(instance){
+            instance.recordPayment(payment, {
+                from: App.account,
+                gas: 2500000,
+                value: wei
+            }).then(function(){
+                console.log('sent wei')
+            })
+        });
+
+    },
+
+    withdraw: function(i) {
+        console.log('withdraw chkp ' + (i+1))
+        App.contracts.Campaign.at(App.addr).then(function(instance){
+            instance.executePayment({
+                from: App.account,
+                gas: 2500000,
+            }).then(function(res){
+                console.log('withdraw wei')
+            })
+        });
     },
 
     campaignRecursion: function(campaignsInstance, html, i, numCampaigns) {

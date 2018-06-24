@@ -25,7 +25,7 @@ Load particles.js and configure the particles:
 <script src="particles.js"></script>
 ```
 
-**app.js**
+**app2.js**
 ```javascript
 /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
 particlesJS.load('particles-js', 'assets/particles.json', function() {
